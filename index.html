@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Truth — Skylark Drones BI Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <header class="hud">
+    <div class="hud-grid-bg" aria-hidden="true"></div>
+    <div class="hud-inner">
+      <div class="hud-title-row">
+        <span class="hud-mark">◈</span>
+        <h1>GROUND <span class="hud-thin">TRUTH</span></h1>
+        <span class="live-badge"><span class="live-dot" aria-hidden="true"></span>LIVE · MONDAY.COM</span>
+      </div>
+      <p class="hud-sub">Skylark Drones' business intelligence agent — founder-level answers on pipeline, deals, work orders &amp; billing, queried live from monday.com. Named for the aerial-survey term: the verified real-world data used to calibrate what you see from the air.</p>
+    </div>
+  </header>
+
+  <section class="telemetry-strip" id="kpi-strip" aria-label="Live business metrics">
+    <div class="telemetry-loading">Establishing link to monday.com…</div>
+  </section>
+
+  <nav class="tabs" role="tablist" aria-label="Views">
+    <button class="tab active" id="tab-btn-chat" role="tab" aria-selected="true" aria-controls="panel-chat">Comms</button>
+    <button class="tab" id="tab-btn-dashboard" role="tab" aria-selected="false" aria-controls="panel-dashboard">Flight Log</button>
+  </nav>
+
+  <main>
+    <section class="panel active" id="panel-chat" role="tabpanel" aria-labelledby="tab-btn-chat">
+      <aside class="mission-control">
+        <div class="mc-block">
+          <h2>Actions</h2>
+          <button class="mc-btn mc-btn-primary" id="btn-leadership">Prepare leadership update</button>
+          <button class="mc-btn" id="btn-clear">Clear conversation</button>
+        </div>
+        <div class="mc-block">
+          <h2>Try asking</h2>
+          <button class="mc-chip">How's our pipeline looking for the energy sector this quarter?</button>
+          <button class="mc-chip">Which deals are missing a close date?</button>
+          <button class="mc-chip">How's our work order billing status?</button>
+          <button class="mc-chip">Which won deals have no matching work order yet?</button>
+        </div>
+        <div class="mc-footer">
+          Reasoning: Groq (free tier)<br>
+          Data: monday.com API, read-only<br>
+          Stack: FastAPI + vanilla JS
+        </div>
+      </aside>
+
+      <div class="chat-area">
+        <div class="chat-log" id="chat-log">
+          <div class="chat-empty">
+            <p>No transmissions yet. Ask a business question, or pick one from the panel.</p>
+          </div>
+        </div>
+        <form class="chat-input-row" id="chat-form">
+          <input type="text" id="chat-input" placeholder="Ask a business question…" autocomplete="off" />
+          <button type="submit" class="chat-send" aria-label="Send">↑</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-dashboard" role="tabpanel" aria-labelledby="tab-btn-dashboard">
+      <div class="dash-grid" id="dash-grid">
+        <div class="telemetry-loading">Pulling flight data…</div>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@13.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
