@@ -1,0 +1,11 @@
+fastapi>=0.111
+uvicorn[standard]>=0.30
+openai>=1.40
+requests>=2.31
+python-dotenv>=1.0
+python-dateutil>=2.9
+
+# Optional: only needed if you also want to run the Streamlit version
+# (streamlit_app.py) instead of / alongside the FastAPI version (main.py).
+streamlit>=1.37
+pandas>=2.0
